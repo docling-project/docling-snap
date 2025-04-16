@@ -1,5 +1,5 @@
 {
-  "originHash" : "d15e58060b7ff28e3c910d044f93d6a52066f9213608fe9584ed6c1e9fceb294",
+  "originHash" : "4cca76c82f19dadcfdb884f6a40f2f6f11bb1f09a919030ef322d84b04da4caa",
   "pins" : [
     {
       "identity" : "gzipswift",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/johnmai-dev/Jinja",
       "state" : {
-        "revision" : "bbddb92fc51ae420b87300298370fd1dfc308f73",
-        "version" : "1.1.1"
+        "revision" : "31c4dd39bcdc07eaa42a384bdc88ea599022b800",
+        "version" : "1.1.2"
       }
     },
     {
@@ -31,10 +31,10 @@
     {
       "identity" : "mlx-swift-examples",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cyrilzakka/mlx-swift-examples",
+      "location" : "https://github.com/docling-project/mlx-swift-examples.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "61a95b957083b73c2a7d19e748530730c242ed7d"
+        "branch" : "dev/smoldocling",
+        "revision" : "2302b2dfe1bd618213eb0c3cfb0249eacc07952c"
       }
     },
     {
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-numerics",
       "state" : {
-        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
-        "version" : "1.0.2"
+        "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
+        "version" : "1.0.3"
       }
     },
     {
@@ -96,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/huggingface/swift-transformers",
       "state" : {
-        "revision" : "55710ddfb1ae804b4b7ce973be75cf2e41272185",
-        "version" : "0.1.17"
+        "revision" : "940a4fac109d7d68817b22382de4894a8ea945c3",
+        "version" : "0.1.20"
       }
     }
   ],

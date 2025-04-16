@@ -15,7 +15,7 @@ import Hub
 // Runtime configuration download
 
 struct HuggingSnapModelConfiguration: Codable, Sendable {
-    static let configurationRepo = "HuggingFaceTB/smolvlm-app-config"
+    // static let configurationRepo = "HuggingFaceTB/smolvlm-app-config"
 
     let model: String
     let videoSystemPrompt: String
@@ -41,12 +41,21 @@ struct HuggingSnapModelConfiguration: Codable, Sendable {
 
 // FIXME: this is global because otherwise I have to access with `await` inside the async methods, will fix later
 fileprivate var runtimeConfiguration: HuggingSnapModelConfiguration = HuggingSnapModelConfiguration(
-    model: "HuggingFaceTB/SmolVLM2-500M-Video-Instruct-mlx",
-    videoSystemPrompt: "Focus only on describing the key dramatic action or notable event occurring in this video segment. Skip general context or scene-setting details unless they are crucial to understanding the main action.",
-    videoUserPrompt: "What is the main action or notable event happening in this segment? Describe it in one brief sentence.",
-    photoSystemPrompt: "You are an image understanding model capable of describing the salient features of any image.",
-    photoUserPrompt: "Describe this image.",
-    generationParameters: HuggingSnapModelConfiguration.GenerationParameters(temperature: 0.7, topP: 0.9)
+    // model: "HuggingFaceTB/SmolVLM2-500M-Video-Instruct-mlx",
+    model: "ds4sd/SmolDocling-256M-preview-mlx-bf16-docling-snap",
+
+
+    videoSystemPrompt: "Convert this page to docling.",
+    videoUserPrompt: "Convert this page to docling.",
+    photoSystemPrompt: "Convert this page to docling.",
+    photoUserPrompt: "Convert this page to docling.",
+
+    // videoSystemPrompt: "Focus only on describing the key dramatic action or notable event occurring in this video segment. Skip general context or scene-setting details unless they are crucial to understanding the main action.",
+    // videoUserPrompt: "What is the main action or notable event happening in this segment? Describe it in one brief sentence.",
+    // photoSystemPrompt: "You are an image understanding model capable of describing the salient features of any image.",
+    // photoUserPrompt: "Describe this image.",
+    generationParameters: HuggingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
+    // generation: HuggingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
 )
 
 @Observable
@@ -59,7 +68,7 @@ class VLMEvaluator {
     var modelInfo = "Initializing model..."
     var stat = ""
 
-    let maxTokens = 400
+    let maxTokens = 1500
 
     /// update the display every N tokens -- 4 looks like it updates continuously
     /// and is low overhead.  observed ~15% reduction in tokens/s when updating
@@ -73,6 +82,7 @@ class VLMEvaluator {
 
     var loadState = LoadState.idle
 
+    /*
     func loadConfiguration(hub: HubApi) async throws -> HuggingSnapModelConfiguration {
         let filename = "config.json"
         let downloadedTo = try await hub.snapshot(from: HuggingSnapModelConfiguration.configurationRepo, matching: filename)
@@ -84,6 +94,7 @@ class VLMEvaluator {
 
         return config
     }
+    */
 
     /// load and return the model -- can be called multiple times, subsequent calls will
     /// just return the loaded model
@@ -102,10 +113,11 @@ class VLMEvaluator {
                 // TODO: use a fallback if we can't download - ideally the one from the previous run
                 // Fine-grained read-only token for the HuggingFaceTB org
                 let hubApi = HubApi()
-                let config = try await loadConfiguration(hub: HubApi())
-                runtimeConfiguration = config
+                // let config = try await loadConfiguration(hub: HubApi())
+                // runtimeConfiguration = config
+                let config = runtimeConfiguration
 
-                let modelConfiguration = ModelConfiguration(id: config.model, defaultPrompt: config.photoUserPrompt)
+            let modelConfiguration = ModelConfiguration(id: config.model, defaultPrompt: config.photoUserPrompt)
 
                 let modelContainer = try await VLMModelFactory.shared.loadContainer(hub: hubApi,
                     configuration: modelConfiguration
@@ -135,10 +147,8 @@ class VLMEvaluator {
 
         running = true
         self.output = ""
-        
         let orientedImage = image?.oriented(.right)
         
-
         do {
             let modelContainer = try await load()
             let result = try await modelContainer.perform { context in
@@ -157,7 +167,7 @@ class VLMEvaluator {
 
                 let systemPrompt = videoURL != nil ? runtimeConfiguration.videoSystemPrompt : runtimeConfiguration.photoSystemPrompt
                 let userPrompt = await customUserInput.isEmpty ? (videoURL != nil ? runtimeConfiguration.videoUserPrompt : runtimeConfiguration.photoUserPrompt):customUserInput
-
+                
                 // Note: the image order is different for smolvlm
                 let messages: [Message] = [
                     [
@@ -181,9 +191,15 @@ class VLMEvaluator {
                             + [["type": "text", "text": userPrompt]]
                     ]
                 ]
-                let userInput = UserInput(messages: messages, images: images, videos: videos)
-                let input = try await context.processor.prepare(input: userInput)
 
+                // TODO: Check why UserInput looses images after next line!
+                let userInput = UserInput(messages: messages, images: images, videos: videos)
+                print("userInput in app... IMAGE SHOULD NOT BE EMPTY!")
+                print(userInput)
+                let input = try await context.processor.prepare(input: userInput)
+                print("input in app...")
+                print(input)
+                
                 let generationParameters = MLXLMCommon.GenerateParameters(
                     temperature: runtimeConfiguration.generationParameters.temperature,
                     topP: runtimeConfiguration.generationParameters.topP
@@ -201,6 +217,7 @@ class VLMEvaluator {
                         }
                     }
 
+                    // TODO: Stop prediction after <end_of_utterance>
                     if tokens.count >= maxTokens {
                         return .stop
                     } else {
@@ -213,7 +230,6 @@ class VLMEvaluator {
             if result.output != self.output {
                 self.output = result.output
             }
-//            print(self.output)
             self.stat = " Tokens/second: \(String(format: "%.3f", result.tokensPerSecond))"
 
         } catch {
