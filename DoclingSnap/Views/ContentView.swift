@@ -148,7 +148,7 @@ struct ContentView: View {
                     
                     VStack {
                         VStack {
-                            Text("Visual Intelligence\nwith Hugging Face")
+                            Text("Docling Snap")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.center)
@@ -162,14 +162,14 @@ struct ContentView: View {
                                     )
                                 .padding(.bottom)
                             
-                            Text("Learn about the objects and places around you and get information about what you see")
+                            Text("Snap documents with Docling Snap")
                                 .font(.headline)
                                 .foregroundStyle(.primary)
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom)
                             
-                            Text("Photos and videos used are processed entirely on your device. No data is sent to the cloud.")
+                            Text("Photos are processed entirely on your device. No data is sent to the cloud.")
                                 .font(.body)
                                 .fontWeight(.medium)
                                 .foregroundStyle(.secondary)

@@ -22,14 +22,14 @@ struct SettingsView: View {
             List {
                 Section("Support") {
                     Button(action: {
-                        guard let url = URL(string: "https://huggingface.co/privacy") else { return }
+                        guard let url = URL(string: "https://docling.io") else { return }
                                                openURL(url)
                     }, label: {
                         Label(title: {
-                            Text("Privacy Policy")
+                            Text("About Docling")
                                 .foregroundStyle(.primary)
                         }, icon: {
-                            Image(systemName: "lock")
+                            Image(systemName: "link")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
@@ -38,19 +38,19 @@ struct SettingsView: View {
                         .imageScale(.medium)
                     })
                     .tint(.primary)
-                    .accessibilityLabel(Text("Press the button to view Hugging Face's privacy policy"))
+                    .accessibilityLabel(Text("Check Docling page on GitHub"))
                     .buttonStyle(.borderless)
                     .contentShape(Rectangle())
                     
                     Button(action: {
-                        guard let url = URL(string: "https://huggingface.co/terms-of-service/") else { return }
+                        guard let url = URL(string: "https://huggingface.co/ds4sd/SmolDocling-256M-preview") else { return }
                         openURL(url)
                     }, label: {
                         Label(title: {
-                            Text("Terms of Use")
+                            Text("About SmolDocling-256M")
                                 .foregroundStyle(.primary)
                         }, icon: {
-                            Image(systemName: "book.pages")
+                            Image(systemName: "link")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
@@ -60,7 +60,7 @@ struct SettingsView: View {
                         .imageScale(.medium)
                     })
                     .tint(.primary)
-                    .accessibilityLabel(Text("Press the button to view Hugging Face's terms of service"))
+                    .accessibilityLabel(Text("Check SmolDocling page on huggingface"))
                     .buttonStyle(.borderless)
                     .contentShape(Rectangle())
                     
@@ -69,7 +69,7 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                     } label: {
                         Label(title: {
-                            Text("HuggingSnap")
+                            Text("DoclingSnap")
                         }, icon: {
                             Image("huggy.fill")
                                 .renderingMode(.template)
@@ -79,9 +79,10 @@ struct SettingsView: View {
                         })
                         .imageScale(.medium)
                     }
-                    .accessibilityLabel(Text("HuggingSnap version \(Bundle.main.releaseVersionNumberPretty)"))
+                    .accessibilityLabel(Text("DoclingSnap version \(Bundle.main.releaseVersionNumberPretty)"))
                 }
                 
+                /*
                 Button(action: {
                     isShowingMailView.toggle()
                 }, label: {
@@ -110,6 +111,7 @@ struct SettingsView: View {
                         isHTML: false
                     )
                 }
+                */
                 
             }
             .listStyle(.insetGrouped)

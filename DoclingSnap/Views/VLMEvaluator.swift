@@ -14,7 +14,7 @@ import Hub
 
 // Runtime configuration download
 
-struct HuggingSnapModelConfiguration: Codable, Sendable {
+struct DoclingSnapModelConfiguration: Codable, Sendable {
     // static let configurationRepo = "HuggingFaceTB/smolvlm-app-config"
 
     let model: String
@@ -40,7 +40,7 @@ struct HuggingSnapModelConfiguration: Codable, Sendable {
 }
 
 // FIXME: this is global because otherwise I have to access with `await` inside the async methods, will fix later
-fileprivate var runtimeConfiguration: HuggingSnapModelConfiguration = HuggingSnapModelConfiguration(
+fileprivate var runtimeConfiguration: DoclingSnapModelConfiguration = DoclingSnapModelConfiguration(
     // model: "HuggingFaceTB/SmolVLM2-500M-Video-Instruct-mlx",
     model: "ds4sd/SmolDocling-256M-preview-mlx-bf16-docling-snap",
 
@@ -54,8 +54,11 @@ fileprivate var runtimeConfiguration: HuggingSnapModelConfiguration = HuggingSna
     // videoUserPrompt: "What is the main action or notable event happening in this segment? Describe it in one brief sentence.",
     // photoSystemPrompt: "You are an image understanding model capable of describing the salient features of any image.",
     // photoUserPrompt: "Describe this image.",
-    generationParameters: HuggingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
-    // generation: HuggingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
+    // generation: DoclingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
+
+    // -----------------------------------------------------------------------------------------------------
+    // generationParameters: DoclingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
+    generationParameters: DoclingSnapModelConfiguration.GenerationParameters(temperature: 0.1, topP: 0.9)
 )
 
 @Observable
@@ -83,11 +86,11 @@ class VLMEvaluator {
     var loadState = LoadState.idle
 
     /*
-    func loadConfiguration(hub: HubApi) async throws -> HuggingSnapModelConfiguration {
+    func loadConfiguration(hub: HubApi) async throws -> DoclingSnapModelConfiguration {
         let filename = "config.json"
-        let downloadedTo = try await hub.snapshot(from: HuggingSnapModelConfiguration.configurationRepo, matching: filename)
+        let downloadedTo = try await hub.snapshot(from: DoclingSnapModelConfiguration.configurationRepo, matching: filename)
         let jsonURL = downloadedTo.appendingPathComponent(filename)
-        let config = try JSONDecoder().decode(HuggingSnapModelConfiguration.self, from: try Data(contentsOf: jsonURL))
+        let config = try JSONDecoder().decode(DoclingSnapModelConfiguration.self, from: try Data(contentsOf: jsonURL))
 
         // FIXME: remove this when we upgrade to swift-transformers with cache invalidation
         try? FileManager().removeItem(at: downloadedTo)
@@ -192,13 +195,10 @@ class VLMEvaluator {
                     ]
                 ]
 
-                // TODO: Check why UserInput looses images after next line!
                 let userInput = UserInput(messages: messages, images: images, videos: videos)
                 print("userInput in app... IMAGE SHOULD NOT BE EMPTY!")
                 print(userInput)
                 let input = try await context.processor.prepare(input: userInput)
-                print("input in app...")
-                print(input)
                 
                 let generationParameters = MLXLMCommon.GenerateParameters(
                     temperature: runtimeConfiguration.generationParameters.temperature,
@@ -217,7 +217,14 @@ class VLMEvaluator {
                         }
                     }
 
+                    let last_t = [tokens.last ?? 0]
+                    let decoded_token = context.tokenizer.decode(tokens: last_t)
+                    print(decoded_token)
                     // TODO: Stop prediction after <end_of_utterance>
+                    if decoded_token == "<end_of_utterance>" {
+                        return .stop
+                    }
+                    
                     if tokens.count >= maxTokens {
                         return .stop
                     } else {

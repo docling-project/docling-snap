@@ -13,26 +13,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F117BC392D5BE59F008074F1 /* HuggingSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuggingSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F117BC392D5BE59F008074F1 /* DoclingSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoclingSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		EB64526E2D88998700FD89D7 /* Exceptions for "HuggingSnap" folder in "HuggingSnap" target */ = {
+		EB64526E2D88998700FD89D7 /* Exceptions for "DoclingSnap" folder in "DoclingSnap" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = F117BC382D5BE59F008074F1 /* HuggingSnap */;
+			target = F117BC382D5BE59F008074F1 /* DoclingSnap */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F117BC3B2D5BE59F008074F1 /* HuggingSnap */ = {
+		F117BC3B2D5BE59F008074F1 /* DoclingSnap */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				EB64526E2D88998700FD89D7 /* Exceptions for "HuggingSnap" folder in "HuggingSnap" target */,
+				EB64526E2D88998700FD89D7 /* Exceptions for "DoclingSnap" folder in "DoclingSnap" target */,
 			);
-			path = HuggingSnap;
+			path = DoclingSnap;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -54,7 +54,7 @@
 		F117BC302D5BE59F008074F1 = {
 			isa = PBXGroup;
 			children = (
-				F117BC3B2D5BE59F008074F1 /* HuggingSnap */,
+				F117BC3B2D5BE59F008074F1 /* DoclingSnap */,
 				F117BC3A2D5BE59F008074F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,7 +62,7 @@
 		F117BC3A2D5BE59F008074F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F117BC392D5BE59F008074F1 /* HuggingSnap.app */,
+				F117BC392D5BE59F008074F1 /* DoclingSnap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F117BC382D5BE59F008074F1 /* HuggingSnap */ = {
+		F117BC382D5BE59F008074F1 /* DoclingSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F117BC472D5BE5A0008074F1 /* Build configuration list for PBXNativeTarget "HuggingSnap" */;
+			buildConfigurationList = F117BC472D5BE5A0008074F1 /* Build configuration list for PBXNativeTarget "DoclingSnap" */;
 			buildPhases = (
 				F117BC352D5BE59F008074F1 /* Sources */,
 				F117BC362D5BE59F008074F1 /* Frameworks */,
@@ -83,16 +83,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F117BC3B2D5BE59F008074F1 /* HuggingSnap */,
+				F117BC3B2D5BE59F008074F1 /* DoclingSnap */,
 			);
-			name = HuggingSnap;
+			name = DoclingSnap;
 			packageProductDependencies = (
 				F1C679AB2D600DB2004565BC /* MLXLMCommon */,
 				F1C679AD2D600DB2004565BC /* MLXVLM */,
 				F1D07C8F2D6433F8006A250A /* MarkdownUI */,
 			);
 			productName = HuggingSnap;
-			productReference = F117BC392D5BE59F008074F1 /* HuggingSnap.app */;
+			productReference = F117BC392D5BE59F008074F1 /* DoclingSnap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F117BC342D5BE59F008074F1 /* Build configuration list for PBXProject "HuggingSnap" */;
+			buildConfigurationList = F117BC342D5BE59F008074F1 /* Build configuration list for PBXProject "DoclingSnap" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -128,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F117BC382D5BE59F008074F1 /* HuggingSnap */,
+				F117BC382D5BE59F008074F1 /* DoclingSnap */,
 			);
 		};
 /* End PBXProject section */
@@ -278,14 +278,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HuggingSnap/HuggingSnap.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DoclingSnap/DoclingSnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"HuggingSnap/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DoclingSnap/Preview Content\"";
 				DEVELOPMENT_TEAM = 76CMF53Q35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HuggingSnap/Info.plist;
+				INFOPLIST_FILE = DoclingSnap/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DoclingSnap;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -320,14 +320,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HuggingSnap/HuggingSnap.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DoclingSnap/DoclingSnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"HuggingSnap/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DoclingSnap/Preview Content\"";
 				DEVELOPMENT_TEAM = 76CMF53Q35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HuggingSnap/Info.plist;
+				INFOPLIST_FILE = DoclingSnap/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DoclingSnap;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -360,7 +360,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F117BC342D5BE59F008074F1 /* Build configuration list for PBXProject "HuggingSnap" */ = {
+		F117BC342D5BE59F008074F1 /* Build configuration list for PBXProject "DoclingSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F117BC452D5BE5A0008074F1 /* Debug */,
@@ -369,7 +369,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F117BC472D5BE5A0008074F1 /* Build configuration list for PBXNativeTarget "HuggingSnap" */ = {
+		F117BC472D5BE5A0008074F1 /* Build configuration list for PBXNativeTarget "DoclingSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F117BC482D5BE5A0008074F1 /* Debug */,
@@ -385,7 +385,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/docling-project/mlx-swift-examples.git";
 			requirement = {
-				branch = dev/smoldocling;
+				branch = dev/smoldocling_merge;
 				kind = branch;
 			};
 		};

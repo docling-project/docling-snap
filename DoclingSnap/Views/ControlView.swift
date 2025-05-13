@@ -89,7 +89,7 @@ struct ControlView: View {
                                             .fill(.ultraThickMaterial)
                                     }
                             }
-                            .accessibilityLabel(Text("Press this button to have HuggingSnap describe the current image"))
+                            .accessibilityLabel(Text("Press this button to have DoclingSnap describe the current image"))
                             .transition(.blurReplace.combined(with: .scale))
                         }
                         
@@ -111,7 +111,7 @@ struct ControlView: View {
                                             .fill(.ultraThickMaterial)
                                     }
                             }
-                            .accessibilityLabel(Text("Press this button to have HuggingSnap summarize the current video."))
+                            .accessibilityLabel(Text("Press this button to scan with DoclingSnap."))
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -132,10 +132,10 @@ struct ControlView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                        .accessibilityLabel(Text("Press the button to type a message to HuggingSnap"))
+                        .accessibilityLabel(Text("Press the button to type a message to DoclingSnap"))
                     } else {
                         PhotosPicker(selection: $selectedItem,
-                                     matching: .any(of: [.images, .videos])) {
+                                     matching: .any(of: [.images])) {
                             ZStack {
                                 Circle()
                                     .fill(.regularMaterial)
@@ -145,7 +145,7 @@ struct ControlView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                                     .accessibilityLabel(Text("Press the button to select a photo or video as input to HuggingSnap"))
+                                     .accessibilityLabel(Text("Press the button to select a photo as input to DoclingSnap"))
                     }
                     
                     
@@ -191,7 +191,7 @@ struct ControlView: View {
                                 Image(systemName: "xmark")
                                     .foregroundStyle(.white)
                                     .fontWeight(.bold)
-                                    .imageScale(.large)
+                                    .imageScale(.small)  //.large
                                     .transition(.blurReplace)
                                     .contentShape(.rect)
                             } else {
@@ -204,7 +204,7 @@ struct ControlView: View {
                         }
                         .frame(width: 70, height: 70)
                         .contentShape(.rect)
-                        .accessibilityLabel(Text(isCaptured ? "Press the button to clear the capture.":"Press the button to snap a picture. Tap and hold to record a video."))
+                        .accessibilityLabel(Text(isCaptured ? "Press the button to clear the capture.":"Press the button to snap a picture."))
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onChanged { _ in
@@ -267,7 +267,7 @@ struct ControlView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                        .accessibilityLabel(Text("Press the button to dictate a message to HuggingSnap"))
+                        .accessibilityLabel(Text("Press the button to dictate a message to DoclingSnap"))
                     } else {
                         Button {
 #if targetEnvironment(simulator)

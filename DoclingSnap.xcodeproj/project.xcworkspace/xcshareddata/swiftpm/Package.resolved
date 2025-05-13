@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/docling-project/mlx-swift-examples.git",
       "state" : {
-        "branch" : "dev/smoldocling",
-        "revision" : "2302b2dfe1bd618213eb0c3cfb0249eacc07952c"
+        "branch" : "dev/smoldocling_merge",
+        "revision" : "2b0a3fd26b5b40b1866170ee377c348c5e8c8f0d"
       }
     },
     {

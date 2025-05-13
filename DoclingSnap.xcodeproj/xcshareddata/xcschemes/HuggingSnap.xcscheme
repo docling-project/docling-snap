@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F117BC382D5BE59F008074F1"
-               BuildableName = "HuggingSnap.app"
-               BlueprintName = "HuggingSnap"
-               ReferencedContainer = "container:HuggingSnap.xcodeproj">
+               BuildableName = "DoclingSnap.app"
+               BlueprintName = "DoclingSnap"
+               ReferencedContainer = "container:DoclingSnap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F117BC382D5BE59F008074F1"
-            BuildableName = "HuggingSnap.app"
-            BlueprintName = "HuggingSnap"
-            ReferencedContainer = "container:HuggingSnap.xcodeproj">
+            BuildableName = "DoclingSnap.app"
+            BlueprintName = "DoclingSnap"
+            ReferencedContainer = "container:DoclingSnap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F117BC382D5BE59F008074F1"
-            BuildableName = "HuggingSnap.app"
-            BlueprintName = "HuggingSnap"
-            ReferencedContainer = "container:HuggingSnap.xcodeproj">
+            BuildableName = "DoclingSnap.app"
+            BlueprintName = "DoclingSnap"
+            ReferencedContainer = "container:DoclingSnap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
